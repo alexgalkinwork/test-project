@@ -1,0 +1,20 @@
+<div class="mx-12">
+    <p class="title font-weight-regular mb-2 mt-9">Tabelle</p>
+
+    <v-divider class="mb-8"></v-divider>
+    <v-data-table
+        class="data-table elevation-1"
+        @click="hi(event)"
+        :hide-default-footer="true"
+        disable-pagination
+        :headers="headers"
+        :items="data"
+    ></v-data-table>
+
+    <v-snackbar v-model="snackbar">
+        Hey 👋
+        <v-btn color="red" text @click="snackbar = false">
+            Close
+        </v-btn>
+    </v-snackbar>
+</div>

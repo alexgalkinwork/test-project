@@ -1,0 +1,20 @@
+<v-form ref="form" v-model="valid" lazy-validation>
+    <div class="mx-12">
+        <p class="title font-weight-regular mb-2 mt-9">Formular</p>
+
+        <v-divider class="mb-8"></v-divider>
+
+        <v-row>
+            <v-col cols="12" sm="6" md="3">
+                <v-text-field v-model="text" :rules="textRules" class="mt-1" label="Text" outlined></v-text-field>
+            </v-col>
+            <v-col cols="12" sm="6" md="3">
+                <v-text-field v-model="number" :rules="numberRules" class="mt-1" label="Zahl" outlined></v-text-field>
+            </v-col>
+        </v-row>
+
+        <v-btn color="success" class="mr-4" @click="validate">
+            Senden
+        </v-btn>
+    </div>
+</v-form>
