@@ -2,7 +2,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import ResultListDataService from '@/Services/ResultListDataService';
 import TableHeader from '@/Types/TableHeader';
 import ResultListData from '@/Types/ResultListData';
-import { ResultListInterface } from '@/Types/ResultListInterface';
+import ResultListService from '@/Services/ResultListService';
 
 @Component
 export default class ResultList extends Vue {
@@ -10,11 +10,11 @@ export default class ResultList extends Vue {
   @Prop() public text!: string;
 
   @ResultListDataService()
-  private list!: ResultListInterface;
+  private list!: ResultListService;
 
   private snackbar = false;
-  private headers: TableHeader[] = [];
-  private data: ResultListData[] = [];
+  private headers: Array<TableHeader> = [];
+  private data: Array<ResultListData> = [];
   private observer: IntersectionObserver | null = null;
 
   private created() {
@@ -31,6 +31,9 @@ export default class ResultList extends Vue {
     }
   }
 
+  /**
+   * Creates an observer that displays a snackbar when a selected element comes into the viewport
+   */
   private createObserver() {
     const elementToTrigger = 10;
     const trigger = this.$el.querySelector(`tr:nth-child(${elementToTrigger})`);
@@ -45,6 +48,9 @@ export default class ResultList extends Vue {
     }
   }
 
+  /**
+   * Populates the table with data generated from user input
+   */
   private populateTable() {
     this.data = this.list.createList(this.number, this.text);
 

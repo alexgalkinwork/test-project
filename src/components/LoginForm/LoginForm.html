@@ -1,0 +1,27 @@
+<v-form ref="form" v-model="valid" lazy-validation>
+    <div class="mx-12">
+        <p class="title font-weight-regular mb-2 mt-9">Login</p>
+
+        <v-divider class="mb-8"></v-divider>
+
+        <v-row>
+            <v-col cols="12" sm="6" md="3">
+                <v-text-field v-model="username" :rules="usernameRules" class="mt-1" label="Username" outlined></v-text-field>
+            </v-col>
+            <v-col cols="12" sm="6" md="3">
+                <v-text-field
+                    type="password"
+                    v-model="password"
+                    :rules="passwordRules"
+                    class="mt-1"
+                    label="Password"
+                    outlined
+                ></v-text-field>
+            </v-col>
+        </v-row>
+
+        <v-btn color="success" class="mr-4" @click="login">
+            Login
+        </v-btn>
+    </div>
+</v-form>
